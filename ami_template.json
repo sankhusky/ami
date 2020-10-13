@@ -6,8 +6,7 @@
         "subnet_id": "",
         "source_ami": "ami-0817d428a6fb68645",
         "ssh_username": "ubuntu",
-        "dev_account":"",
-        "prod_account":""
+        "shared_accounts":""        
     },
     "builders": [
         {
@@ -21,7 +20,7 @@
             "ssh_username": "{{user `ssh_username`}}",
             "ami_name": "csye6225_{{timestamp}}",
             "ami_description": "Ubuntu AMI for CSYE 6225 - Fall 2020",
-            "ami_users": ["{{user `dev_account`}}", "{{user `prod_account`}}"],
+            "ami_users": "{{user `shared_accounts`}}",
             "launch_block_device_mappings": [
                 {
                     "device_name": "/dev/sda1",
