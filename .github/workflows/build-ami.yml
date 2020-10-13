@@ -34,4 +34,4 @@ jobs:
       - name: Validate and build packer AMI
         run: |
           packer validate ami_template.json
-          packer build -var 'aws_access_key=${{ secrets.AWS_ACCESS_KEY }}' -var 'aws_secret_key=${{ secrets.AWS_SECRET_KEY }}' -var 'aws_region=${{ secrets.AWS_REGION }}' -var 'subnet_id=${{ secrets.AWS_SUBNET_ID }}' -var 'source_ami=${{ secrets.SOURCE_AMI }}' -var 'dev_account=${{ secrets.DEV_ACCOUNT_ID }}' -var 'prod_account=${{ secrets.PROD_ACCOUNT_ID }}' ami_template.json
+          packer build -var 'aws_access_key=${{ secrets.AWS_ACCESS_KEY }}' -var 'aws_secret_key=${{ secrets.AWS_SECRET_KEY }}' -var 'aws_region=${{ secrets.AWS_REGION }}' -var 'subnet_id=${{ secrets.AWS_SUBNET_ID }}' -var 'source_ami=${{ secrets.SOURCE_AMI }}' -var 'shared_accounts=${{ secrets.DEV_ACCOUNT_ID }},{{ secrets.PROD_ACCOUNT_ID }}' ami_template.json
